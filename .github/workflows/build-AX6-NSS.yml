@@ -177,6 +177,7 @@ jobs:
           > 首次使用建议 **清空配置全新刷写**（stock 大分区机型）。
 
           ### 预装插件
+          <!-- PassWall（Xray + Sing-box）已停用 -->
           - DDNS-Go
           - Socat
           - UPnP

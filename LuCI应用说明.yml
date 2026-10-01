@@ -60,6 +60,13 @@ LuCI ---> Applications ---> luci-app-squid               # Squid 代理
 LuCI ---> Applications ---> luci-app-privoxy             # Privoxy 过滤代理
 LuCI ---> Applications ---> luci-app-tor                 # Tor 匿名网络
 
+# ## Passwall（已停用，配置参考）
+# 恢复时需同时启用 AX6-IPQ/diy.sh 中的源码区块，并通过 menuconfig 生成新配置。
+# LuCI ---> Applications ---> luci-app-passwall
+#     原启用：Haproxy、Sing-Box、V2ray Geoview、V2ray Geodata、Xray
+#     原可选：Hysteria、NaiveProxy、Shadow_TLS、Simple_Obfs、V2ray_Plugin、
+#             Xray_Plugin、Shadowsocks_Rust_Client、Shadowsocks_Rust_Server
+
 ## VPN 服务端 / 客户端
 LuCI ---> Applications ---> luci-app-openvpn-server      # OpenVPN 服务端（未编入；Imm 版易抽风，若要加优先 Lienol 源）
 LuCI ---> Applications ---> luci-app-ipsec-vpnd          # IPSec VPN 服务端
@@ -264,6 +271,7 @@ LuCI ---> Applications ---> luci-app-openvpn-server      # Imm 自带版易用�
 
 # 2. 代理插件
 #    本固件未预装代理插件；如有需要，请在编译时自行勾选。
+#    已停用 Passwall（原配置：Xray + Sing-Box + Geoview + Geodata，xiaorouji 源）。
 
 # 3. frpc
 #    diy.sh 用官方 frp Release 预编译二进制替换 Imm 源码编译（避开 node/host 编 WebUI）。

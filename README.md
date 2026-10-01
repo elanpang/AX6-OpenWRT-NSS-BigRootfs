@@ -47,6 +47,12 @@
 
 关闭签名校验有安全风险；不要用在线源安装 kmod，已编入固件的包勿用 opkg 覆盖升级。
 
+<!--
+Passwall 已停用。原说明保留如下，供恢复功能时参考：
+- Passwall、OpenClash 等代理插件建议在编译时勾选打进固件。
+- 已编入固件的代理包不要使用 opkg 覆盖升级。
+-->
+
 
 ![image](https://github.com/user-attachments/assets/89a32e90-f5e1-4f46-9d54-9ba8c6e85f9e)
 ![微信截图_20241116071804](https://github.com/user-attachments/assets/502012e5-83d0-4e4b-be8b-a53c1edd0f8b)
