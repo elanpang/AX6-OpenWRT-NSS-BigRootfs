@@ -38,14 +38,14 @@
 
 - NSS 加速默认开启，**不要**在防火墙里额外打开系统硬件/软件流量分载，容易冲突。
 - 大流量时 CPU 占用很低，说明 NSS 在起作用。
-- 固件使用 **opkg** 包管理器；Passwall、OpenClash 等插件建议在编译时勾选打进固件。
+- 固件使用 **opkg** 包管理器；代理类插件建议在编译时勾选打进固件。
 - 自编译固件（自定义内核/NSS）**不建议**使用官方在线源安装 kmod 等内核相关包，容易 ABI 不匹配。
 
 ## opkg 软件源
 
 若 **更新列表** 提示 `Signature check failed`：进入 **系统 → 软件包 → 配置**，注释或删除 `option check_signature` 后重试。
 
-关闭签名校验有安全风险；不要用在线源安装 kmod，PassWall 等已编入固件的包勿用 opkg 覆盖升级。
+关闭签名校验有安全风险；不要用在线源安装 kmod，已编入固件的包勿用 opkg 覆盖升级。
 
 
 ![image](https://github.com/user-attachments/assets/89a32e90-f5e1-4f46-9d54-9ba8c6e85f9e)

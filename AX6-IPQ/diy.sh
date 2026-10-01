@@ -19,13 +19,6 @@ git_sparse_clone main https://github.com/fightroad/luci-app-easytier easytier ea
 # Socat 端口转发 LuCI（Lienol 版，兼容新版 socat，配置用 luci_socat 不冲突）
 git_sparse_clone main https://github.com/Lienol/openwrt-package luci-app-socat
 
-# PassWall 科学上网（xiaorouji 源，替换 feeds 自带版本）
-rm -rf feeds/packages/net/{xray-core,v2ray-geoip,v2ray-geodata,v2ray-geosite,v2ray-geosite-ir,sing-box,chinadns-ng,dns2socks,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-rust,shadowsocksr-libev,simple-obfs,tcping,v2ray-plugin,xray-plugin,geoview,shadow-tls}
-rm -rf feeds/luci/applications/luci-app-passwall
-rm -rf package/openwrt-passwall-packages package/openwrt-passwall
-git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages package/openwrt-passwall-packages
-git clone --depth 1 https://github.com/xiaorouji/openwrt-package package/openwrt-passwall
-
 # frp：用官方预编译包替换 Imm 源码编译（避免 node/host 编 WebUI 失败）
 # 保留 feeds 里 Imm 的 files/（init、uci），LuCI 仍用官方 luci-app-frpc
 DIY_DIR="$(cd "$(dirname "$0")" && pwd)"
