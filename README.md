@@ -47,6 +47,18 @@
 
 关闭签名校验有安全风险；不要用在线源安装 kmod，已编入固件的包勿用 opkg 覆盖升级。
 
+## no-passwall 分支维护
+
+此分支同时禁用 Passwall 界面、中文包及原配套软件包：
+`xray-core`、`sing-box`、`v2ray-geoip`、`v2ray-geosite`、`geoview`、
+`haproxy`、`chinadns-ng`、`dns2socks`、`microsocks`、`ipt2socks`、`tcping`。
+配置采用 `# CONFIG_PACKAGE_… is not set` 保留禁用项；源码下载逻辑保留在 `diy.sh` 的注释区块中。
+共用系统库、DNS、防火墙和组网组件不作为代理专属包清理。
+
+构建工作流会在 `make defconfig` 后检查上述包，若被依赖重新选中则停止构建并列出包名。
+以后恢复代理功能时，需要同步调整配置、源码区块和工作流检查清单。
+固件精简后的可写容量以重新刷机后的 `/overlay` 为准；本配置变更不会清理设备上已有的数据。
+
 <!--
 Passwall 已停用。原说明保留如下，供恢复功能时参考：
 - Passwall、OpenClash 等代理插件建议在编译时勾选打进固件。

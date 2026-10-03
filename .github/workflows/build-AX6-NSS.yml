@@ -134,6 +134,16 @@ jobs:
         # Linux 6.18 bonding triggers unused-function warnings; defconfig may re-enable WERROR.
         sed -i 's/^CONFIG_KERNEL_WERROR=y$/# CONFIG_KERNEL_WERROR is not set/' .config
         make defconfig
+        # no-passwall: fail if dependency resolution re-enables a disabled package.
+        disabled_packages='luci-app-passwall luci-app-passwall2 luci-i18n-passwall-zh-cn luci-i18n-passwall2-zh-cn xray-core sing-box v2ray-geoip v2ray-geosite geoview haproxy chinadns-ng dns2socks microsocks ipt2socks tcping'
+        unexpected=0
+        for package in $disabled_packages; do
+          if grep -Eq "^CONFIG_PACKAGE_${package}=(y|m)$" .config; then
+            echo "::error::Disabled proxy package selected: $package"
+            unexpected=1
+          fi
+        done
+        [ "$unexpected" -eq 0 ] || exit 1
         make download -j8
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
